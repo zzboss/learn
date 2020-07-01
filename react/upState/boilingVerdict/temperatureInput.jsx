@@ -5,7 +5,10 @@ class TemperatureInput extends React.Component {
   }
 
   handleChange (e) {
-    this.props.onTemperatureChange(e.target.value, this.props.scaleName)
+    let val = e.target.value
+    val = parseInt(val)
+    val = Number.isNaN(val) ? 0 : val
+    this.props.onTemperatureChange(val, this.props.scaleName)
   }
 
   render () {
@@ -14,7 +17,7 @@ class TemperatureInput extends React.Component {
     return (
       <fieldset>
         <legend>Please input temperature in {scaleName}</legend>
-        <input type="number" value = {temperature} onChange = {this.handleChange}/>
+        <input value = {temperature} onChange = {this.handleChange}/>
       </fieldset>
     )
   }

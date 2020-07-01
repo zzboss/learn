@@ -28,11 +28,11 @@ class Caculator extends React.Component {
     const fahrenheit = this.state.scaleName === 'Fahrenheit' ? temperature : ((temperature * 9 / 5) + 32)
     return (
       <div>
-        <TemperatureInput temperature = {celsius} scaleName = 'Ceisius' 
+        <TemperatureInput temperature = {parseInt(celsius)} scaleName = 'Ceisius' 
           onTemperatureChange = {this.handleChange} />
-        <TemperatureInput temperature = {fahrenheit} scaleName = 'Fahrenheit' 
+        <TemperatureInput temperature = {parseInt(fahrenheit)} scaleName = 'Fahrenheit' 
           onTemperatureChange = {this.handleChange} /> 
-        <BoilingVerdict celsius = {celsius} /> 
+        <BoilingVerdict celsius = {parseInt(celsius)} /> 
       </div>
     )
   } 
