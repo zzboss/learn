@@ -1,30 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <style>
-        main h1:only-of-type {
-            color: red;
-        }
+      article {
+        /* overflow: hidden; */
+      }
+      article > div:first-child {
+        width: 300px;
+        float: left;
+        background-color: rosybrown;
+      }
+      article > div:nth-child(2) {
+        width: 300px;
+        float: right;
+        background-color: yellowgreen;
+      }
+      main > div {
+        width: 300px;
+        height: 300px;
+        background-color: violet;
+        margin: 0 auto;
+      }
     </style>
-</head>
+  </head>
 
-<body>
+  <body>
+    <article>
+      <div>div1</div>
+      <div>div2</div>
+    </article>
     <main>
-        <article>
-            <div>
-                <h1>haha</h1>
-            </div>
-            <h2>zzboss-h2</h2>
-            <h3>zzboss-h3</h3>
-            <h1>zzboss-h1</h1>
-            <h1>zzboss-h1</h1>
-        </article>
-        <h1>zzboss-span</h1>
+      <div>hello</div>
     </main>
-</body>
-
+  </body>
 </html>
