@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+        }
+
+        main {
+            position: relative;
+            display: flex;
+            width: 150px;
+            height: 150px;
+        }
+
+        main::before {
+            content: "";
+            position: absolute;
+            width: 80px;
+            height: 80px;
+            background-color: tomato;
+            border-radius: 50%;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        main::after {
+            content: 'Menu';
+            position: absolute;
+            color: white;
+            left: 50%;
+            top: 50%;
+            font-size: 1.3em;
+            transform: translate(-50%, -50%);
+        }
+
+        main div {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: absolute;
+            background-color: tomato;
+            border-radius: 50%;
+            transform: scale(0);
+            transition: 1s;
+            transform-origin: 75px 75px;
+        }
+
+        main div span {
+            color: white;
+            transition: 1s;
+        }
+
+        main:hover div {
+            transform: scale(1);
+        }
+    </style>
+    <script>
+        window.onload = function () {
+            let mainMenu = document.querySelector('main');
+            let allMenu = document.querySelectorAll('main div');
+            mainMenu.onmouseover = function () {
+                allMenu.forEach((item, index) => {
+                    let rotateDeg = 360 / allMenu.length * index;
+                    item.style.transform = `scale(1) rotate(${rotateDeg}deg)`
+                    let sp = item.querySelector('span');
+                    sp.style.transform = `rotate(${5*360-rotateDeg}deg)`
+                })
+            }
+            mainMenu.onmouseout = function () {
+                allMenu.forEach((item, index) => {
+                    item.style.transform = `scale(0)`
+                    let sp = item.querySelector('span');
+                    sp.style.transform = `rotate(0)`
+                })
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <main>
+        <div><span>1</span></div>
+        <div><span>2</span></div>
+        <div><span>3</span></div>
+        <div><span>4</span></div>
+        <div><span>5</span></div>
+        <div><span>6</span></div>
+        <div><span>7</span></div>
+        <div><span>8</span></div>
+        <div><span>9</span></div>
+    </main>
+</body>
+
+</html>

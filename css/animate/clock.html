@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        main {
+            width: 400px;
+            height: 400px;
+            border-radius: 50%;
+            background: linear-gradient(to right, #12CBC4, #009432, #9980FA);
+            position: relative;
+        }
+
+        .clock {
+            background-color: #006266;
+        }
+
+        .line {
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+
+        .line div {
+            width: 5px;
+            height: 100%;
+            position: absolute;
+            left: 50%;
+            background-color: white;
+            z-index: -1;
+        }
+
+        .line::before {
+            content: "";
+            width: 95%;
+            height: 95%;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            border-radius: 50%;
+            background-color: #006266;
+        }
+
+        .line::after {
+            content: "";
+            position: absolute;
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            background-color: white;
+        }
+
+        .circle {
+            width: 95%;
+            height: 95%;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            border-radius: 50%;
+        }
+
+        .hour {
+            width: 10px;
+            height: 20%;
+            position: absolute;
+            left: 50%;
+            bottom: 50%;
+            transform: translateX(-50%);
+            transform-origin: center bottom;
+            background-color: white;
+        }
+
+        .minute {
+            width: 6px;
+            height: 30%;
+            position: absolute;
+            left: 50%;
+            bottom: 50%;
+            transform: translateX(-50%);
+            transform-origin: center bottom;
+            background-color: white;
+        }
+
+        .second {
+            width: 4px;
+            height: 40%;
+            position: absolute;
+            left: 50%;
+            bottom: 50%;
+            transform: translateX(-50%);
+            transform-origin: center bottom;
+            background-color: white;
+        }
+    </style>
+    <script>
+        window.onload = function () {
+            let lines = document.querySelectorAll(".line>div");
+            lines.forEach((item, index) => {
+                item.style.transform = `translateX(-50%) rotate(${index * 30}deg)`
+            })
+            let date = new Date();
+            run(date.getHours(), date.getMinutes(), date.getSeconds())
+        }
+
+        function run(h, m, s) {
+            let hour = document.querySelector('.hour');
+            let minutes = document.querySelector('.minute');
+            let second = document.querySelector('.second');
+            if (s > 59) {
+                m++;
+                s = 0;
+            }
+            if (m > 59) {
+                h++;
+                m = 0;
+            }
+            if (h > 11) {
+                h -= 12;
+            }
+            hour.style.transform = `translateX(-50%) rotate(${(h*3600+m*60+s)/(12*3600)*360}deg)`;
+            minutes.style.transform = `translateX(-50%) rotate(${(m*60 +s)/3600 * 360}deg)`;
+            second.style.transform = `translateX(-50%) rotate(${s*6}deg)`;
+            setTimeout(() => {
+                run(h, m, ++s);
+            }, 1000)
+        }
+    </script>
+</head>
+
+<body>
+    <main>
+        <div class="clock circle">
+            <div class="line">
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+            <div class="hour"></div>
+            <div class="minute"></div>
+            <div class="second"></div>
+        </div>
+    </main>
+</body>
+
+</html>

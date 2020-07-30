@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        body {
+            background-color: #5758BB;
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .card {
+            width: 300px;
+            height: 200px;
+            background-color: #FFC312;
+            color: #EA2027;
+            font-weight: bold;
+            font-style: italic;
+            font-size: 1.5em;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 5px;
+            position: relative;
+            transform-style: preserve-3d;
+            transform: perspective(900px) rotateX(45deg);
+        }
+
+        .card::before,
+        .card::after {
+            position: absolute;
+            box-sizing: border-box;
+            width: 50%;
+            height: 100%;
+            top: 0;
+            background-color: #ED4C67;
+            color: white;
+            transition: 1s;
+        }
+
+        .card::before {
+            content: "新年";
+            left: 0;
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            padding-right: 10px;
+            transform-origin: left;
+        }
+
+        .card::after {
+            content: "快乐";
+            right: 0;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            padding-left: 10px;
+            transform-origin: right;
+        }
+
+        .card:hover::before {
+            transform: rotateY(-180deg);
+            border-right: none;
+        }
+
+        .card:hover::after {
+            transform: rotateY(180deg);
+            border-left: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="card">
+        恭喜发财, 红包拿来
+    </div>
+</body>
+
+</html>

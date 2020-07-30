@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    ul {
+      display: flex;
+    }
+
+    ul li {
+      list-style: none;
+      margin-right: 10px;
+    }
+
+    ul li strong {
+      background-color: #6ab04c;
+      padding: 5px 30px;
+      cursor: pointer;
+    }
+
+    ul li:hover div {
+      transform: scale(1);
+    }
+
+    ul li div {
+      position: relative;
+      background-color: #dff9fb;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      transform: scale(0);
+      transition: 1s;
+      transform-origin: center top;
+      z-index: -1;
+    }
+
+    ul li div a {
+      text-decoration: none;
+      color: #30336b;
+      padding: 10px 0px;
+    }
+  </style>
+</head>
+
+<body>
+  <main>
+    <ul>
+      <li>
+        <strong>Live</strong>
+        <div>
+          <a href="#">JavaScript</a>
+          <a href="#">Vue</a>
+          <a href="#">React</a>
+        </div>
+      </li>
+      <li>
+        <strong>Java</strong>
+        <div>
+          <a href="#">Spring</a>
+          <a href="#">Mybatis</a>
+        </div>
+      </li>
+    </ul>
+  </main>
+</body>
+
+</html>
